@@ -1,4 +1,4 @@
-# POLIS-Bench
+# <img src="./assets/logo.svg" alt="POLIS-Bench Logo" width="48"> POLIS-Bench
 
 <p align="center">
   <img src="https://img.shields.io/badge/language-EN%20%7C%20CN-blue" alt="Languages">
@@ -49,35 +49,36 @@
 ```bash
 conda create -n polis-bench python=3.10 -y
 conda activate polis-bench
-pip install -r requirements.txt  # create based on the packages below
+pip install -r requirements.txt
 ```
 
 Essential packages: `tqdm`, `numpy`, `pandas`, `sentence-transformers`, `scikit-learn`, `matplotlib`, `openai` (>=1.0).
 
 ### 2. Dataset Preparation
 
-All preprocessing steps are wrapped in `finetuning/prepare_dataset.py`:
+`datasets/train.jsonl` and `datasets/test.jsonl` are already split. Use the helper CLI to
+clean legacy fields and attach the SFT prompt:
 
 ```bash
-# Filter raw generations (remove model- or answer-specific fields)
-python finetuning/prepare_dataset.py filter \
-  --input /path/to/raw_generations.jsonl \
-  --output datasets/filtered_generations.jsonl
-
-# Split into train/test with a deterministic seed
-python finetuning/prepare_dataset.py split \
-  --input datasets/filtered_generations.jsonl \
-  --train-output datasets/train.jsonl \
-  --test-output datasets/test.jsonl \
-  --train-size 2558 --seed 42
+# Normalise field names (e.g., fix ",language" -> "language")
+python finetuning/prepare_dataset.py normalize \
+  --input datasets/train.jsonl \
+  --output datasets/train_clean.jsonl
+python finetuning/prepare_dataset.py normalize \
+  --input datasets/test.jsonl \
+  --output datasets/test_clean.jsonl
 
 # Attach the instruction-style prompt used for SFT
 python finetuning/prepare_dataset.py format \
-  --input datasets/train.jsonl \
+  --input datasets/train_clean.jsonl \
   --output datasets/train_prompted.jsonl
+python finetuning/prepare_dataset.py format \
+  --input datasets/test_clean.jsonl \
+  --output datasets/test_prompted.jsonl
 ```
 
-Customize the prompt via `--template` if you need variations.
+The `format` subcommand accepts `--template`, `--text-field`, and `--question-field`
+flags if you need to customise the prompt template or source column names.
 
 ### 3. Fine-Tuning
 
@@ -130,8 +131,6 @@ python evaluation/aggregate_results.py \
 
 | Stage | Command | Purpose |
 | ----- | ------- | ------- |
-| Filtering | `prepare_dataset.py filter` | Strip generation metadata before splitting. |
-| Splitting | `prepare_dataset.py split` | Deterministic train/test split. |
 | Prompting | `prepare_dataset.py format` | Attach SFT prompt template. |
 | Fine-tune | `llama_factory-cli train ...` | Launch LoRA training via LLaMA-Factory. |
 | Inference | `run_inference.py` | Batch prompts to an OpenAI-compatible API. |
@@ -144,10 +143,45 @@ python evaluation/aggregate_results.py \
 - `POLIS_dataset/` ships with distilled data and the exact splits used in our experiments.
 - Original policy documents and prompts remain private. Use the scripts in this repo to generate any derived artifacts you need.
 
+## Citation
+If you find POLIS-Bench useful in your work, please cite:
+
+```
+@misc{yang2025polisbenchmultidimensionalevaluationllms,
+      title={POLIS-Bench: Towards Multi-Dimensional Evaluation of LLMs for Bilingual Policy Tasks in Governmental Scenarios},
+      author={Tingyue Yang and Junchi Yao and Yuhui Guo and Chang Liu},
+      year={2025},
+      eprint={2511.04705},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2511.04705},
+}
+```
+
 ## Contributing
 Contributions are welcome! Please open an issue or PR for bug fixes, feature requests, or documentation improvements. Follow the directory conventions above and avoid committing proprietary policy content.
 
 ## License
-The released datasets are intended for research use. Contact the maintainers before redistributing derived policy materials.
+MIT License
+
+Copyright (c) 2025 llllamp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
