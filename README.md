@@ -1,4 +1,9 @@
-# <img src="./assets/POLIS_LOGO.png" alt="POLIS-Bench Logo" width="60"> POLIS-Bench
+<div align="left">
+  <img src="./assets/POLIS_LOGO.png" alt="POLIS-Bench Logo" width="60" style="vertical-align: middle;">
+  <br> 
+</div>
+
+# POLIS-Bench
 
 <p align="center">
   <img src="https://img.shields.io/badge/language-EN%20%7C%20CN-blue" alt="Languages">
