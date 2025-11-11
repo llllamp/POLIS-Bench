@@ -1,7 +1,5 @@
 # <img src="./assets/POLIS_LOGO.png" alt="POLIS-Bench Logo" width="48" style="vertical-align: middle;"> POLIS-Bench
 
-# POLIS-Bench
-
 <p align="center">
   <img src="https://img.shields.io/badge/language-EN%20%7C%20CN-blue" alt="Languages">
   <img src="https://img.shields.io/badge/tasks-Retrieval%20%7C%20Generation%20%7C%20Compliance-orange" alt="Tasks">
