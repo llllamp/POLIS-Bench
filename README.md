@@ -1,4 +1,4 @@
-# <img src="./assets/POLIS_LOGO.png" alt="POLIS-Bench Logo" width="60" style="vertical-align: middle;"> POLIS-Bench
+# <img src="./assets/POLIS_LOGO.png" alt="POLIS-Bench Logo" width="48" style="vertical-align: middle;"> POLIS-Bench
 
 # POLIS-Bench
 
