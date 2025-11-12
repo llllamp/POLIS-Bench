@@ -122,7 +122,7 @@ python evaluation/llm_judge.py \
   --output results/llm_judge \
   --failed results/llm_judge_failed \
   --base-url https://api.example.com/v1 \
-  --api-key sk-*** \
+  --api-key your-api-key \
   --model my-judge-model
 
 # Aggregate CSV reports
