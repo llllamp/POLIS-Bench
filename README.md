@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/license-Research%20Use-lightgrey" alt="License">
 </p>
 
-> A full-stack benchmark for multilingual policy QA — from dataset preparation to evaluation and visualization, without exposing private prompts or raw policy documents.
+> A benchmark for multilingual policy QA — from dataset preparation to evaluation, without exposing private prompts or raw policy documents.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -25,7 +25,7 @@
 
 ## Overview
 - Multilingual coverage: curated Chinese (`CN`) and English (`EN`) policy scenarios.
-- End-to-end pipeline: reproducible scripts for data prep, LoRA fine-tuning, inference, judging, aggregation, and plotting.
+- End-to-end pipeline: reproducible scripts for data prep, LoRA fine-tuning, inference, judging and aggregation.
 - Modular design: every step lives in its own directory and CLI, making it easy to swap models or plug into existing infra.
 
 ## Directory Map
@@ -38,9 +38,7 @@
 | `finetuning/` | Dataset preparation helpers that consolidate the original one-off scripts. |
 | `inference/` | Batch inference helper targeting OpenAI-compatible endpoints. |
 | `POLIS_dataset/` | Released train/test splits and distilled corpus used in the paper. |
-| `visualization/` | Publication-ready matplotlib scripts (e.g., radar chart). |
 
-> **Note**: Raw policy documents are intentionally excluded. Store them privately and generate derived assets via the provided scripts.
 
 ## Quick Start
 
