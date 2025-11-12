@@ -27,7 +27,9 @@
 - Multilingual coverage: curated Chinese (`CN`) and English (`EN`) policy scenarios.
 - End-to-end pipeline: reproducible scripts for data prep, LoRA fine-tuning, inference, judging and aggregation.
 - Modular design: every step lives in its own directory and CLI, making it easy to swap models or plug into existing infra.
+  
   <img src="./assets/Pipeline3.0.png" alt="Pipeline" style="vertical-align: middle;">
+  
 ## Directory Map
 
 | Path | Description |
