@@ -1,13 +1,14 @@
 # <img src="./assets/POLIS_LOGO.png" alt="POLIS-Bench Logo" width="48" style="vertical-align: middle;"> POLIS-Bench
 
 <p align="center">
-<a href="https://arxiv.org/abs/2511.04705" target="_blank">
-<img src="https://www.google.com/url?sa=E&source=gmail&q=https://img.shields.io/badge/arXiv-2511.04705-B31B1B?logo=arxiv%26logoColor=white" alt="arXiv Paper">
-</a>
-<img src="https://img.shields.io/badge/language-EN%20%7C%20CN-blue" alt="Languages">
-<img src="https://img.shields.io/badge/tasks-Retrieval%20%7C%20Generation%20%7C%20Compliance-orange" alt="Tasks">
-<img src="https://img.shields.io/badge/python-3.10+-brightgreen" alt="Python">
-<img src="https://img.shields.io/badge/license-Research%20Use-lightgrey" alt="License">
+  <a href="https://arxiv.org/abs/2511.04705">
+    <img src="https://img.shields.io/badge/arXiv-2511.04705-B31B1B?logo=arxiv&amp;logoColor=white" alt="arXiv Paper" />
+  </a>
+  
+  <img src="https://img.shields.io/badge/language-EN%20%7C%20CN-blue" alt="Languages">
+  <img src="https://img.shields.io/badge/tasks-Retrieval%20%7C%20Generation%20%7C%20Compliance-orange" alt="Tasks">
+  <img src="https://img.shields.io/badge/python-3.10+-brightgreen" alt="Python">
+  <img src="https://img.shields.io/badge/license-Research%20Use-lightgrey" alt="License">
 </p>
 
 > A benchmark for multilingual policy QA — from dataset preparation to evaluation, without exposing private prompts or raw policy documents.
